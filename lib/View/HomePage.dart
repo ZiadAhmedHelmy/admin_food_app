@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
     var dash = DashBoardCubit.get(context);
     var order = OrdersCubit.get(context);
     return BlocProvider.value(
-      value:order..OrdersData(),
+      value: order..OrdersData(),
       child: Scaffold(
           appBar: AppBar(
             backgroundColor: AppColor.orange,
@@ -50,18 +50,27 @@ class HomePage extends StatelessWidget {
               )
             ]),
           ),
-          body: Column(
-            children: [
-              Expanded(
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  children: List.generate(dash.cards.length, (index) {
-                    return DashBoardCard(item: dash.cards[index],
-                    );
-                  }),
-                ),
-              ),
-            ],
+          body: BlocConsumer<OrdersCubit, OrdersState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              return Column(
+                children: [
+                  Expanded(
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      children: List.generate(dash.cards.length, (index) {
+                        return DashBoardCard(item: dash.cards[index],
+                        );
+                      }),
+                    ),
+                  ),
+
+                  TextButton(onPressed: (){
+                    order.getTotalRevenue();
+                  }, child: Text("click"))
+                ],
+              );
+            },
           )
       ),
     );

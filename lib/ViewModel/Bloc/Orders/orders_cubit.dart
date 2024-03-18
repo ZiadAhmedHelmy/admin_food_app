@@ -11,7 +11,7 @@ part 'orders_state.dart';
 class OrdersCubit extends Cubit<OrdersState> {
   OrdersCubit() : super(OrdersInitial());
   static OrdersCubit get(context) => BlocProvider.of(context);
-
+  static double generatedRevenue =0;
   List<OrderModel>activeOrders = [];
 
   Future<void>OrdersData()async{
@@ -22,10 +22,24 @@ class OrdersCubit extends Cubit<OrdersState> {
              activeOrders.add(OrderModel.fromJason(i.data()));
           }
           emit(OrdersSuccessState());
-        print(activeOrders.length);
     });
 
 
         }
+
+    Future<void>getTotalRevenue()async{
+        emit(LoadingRevenueState());
+       await FirebaseFirestore.instance.collection(Collection.orders).snapshots().listen((value) {
+          for(var i in value.docs){generatedRevenue+=i["Price"];}
+          emit(SuccessRevenueState());
+          print("Generated Revenue: ${generatedRevenue}");
+       });
+
+    }
+
+
+
+
+
 
 }
