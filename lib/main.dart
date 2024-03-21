@@ -2,6 +2,7 @@ import 'package:admin_app_foodi/View/HomePage.dart';
 import 'package:admin_app_foodi/ViewModel/Bloc/DashBoardCubit/dash_board_cubit.dart';
 import 'package:admin_app_foodi/ViewModel/Bloc/Orders/orders_cubit.dart';
 import 'package:admin_app_foodi/ViewModel/Bloc/SectionCubit/section_cubit.dart';
+import 'package:admin_app_foodi/ViewModel/Bloc/UserCubit/user_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => SectionCubit(),),
         BlocProvider(create: (context) => DashBoardCubit(),),
         BlocProvider(create: (context) => OrdersCubit(),),
+        BlocProvider(create: (context) => UserCubit(),),
       ],
       child: MaterialApp(
         theme: ThemeData(fontFamily: "Rubik"),

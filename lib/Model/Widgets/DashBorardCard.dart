@@ -1,5 +1,6 @@
 import 'package:admin_app_foodi/Model/Models/dashCardModel.dart';
 import 'package:admin_app_foodi/ViewModel/Bloc/Orders/orders_cubit.dart';
+import 'package:admin_app_foodi/ViewModel/Bloc/UserCubit/user_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -39,7 +40,7 @@ class DashBoardCard extends StatelessWidget {
               children: [
                // SvgPicture.asset("assets/icons/food-order.svg",width:80,),
                 Image.asset(item.image!,width: 100,),
-                Flexible(child: CustomText(text: (item.description =='Active Orders' ? Order.activeOrders.length.toString() :OrdersCubit.generatedRevenue.toString())   ,fontSize: 28,color: Colors.black,fontWeight: FontWeight.bold,)),
+                Flexible(child: CustomText(text: (item.description =='Active Orders' ? Order.activeOrders.length.toString() :item.description=='Generated Revenue' ? OrdersCubit.generatedRevenue.ceilToDouble().toString() :item.description=='Users' ? UserCubit.get(context).usersDetails.length .toString() : "No Users")   ,fontSize: 28,color: Colors.black,fontWeight: FontWeight.bold,)),
               ],
             ),
             CustomText(text: item.description!,fontWeight: FontWeight.w700,fontSize: 20,textAlign: TextAlign.center,),

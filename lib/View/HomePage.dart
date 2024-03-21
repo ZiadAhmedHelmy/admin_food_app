@@ -5,6 +5,8 @@ import 'package:admin_app_foodi/Utils/AppColor.dart';
 import 'package:admin_app_foodi/ViewModel/Bloc/DashBoardCubit/dash_board_cubit.dart';
 import 'package:admin_app_foodi/ViewModel/Bloc/Orders/orders_cubit.dart';
 import 'package:admin_app_foodi/ViewModel/Bloc/SectionCubit/section_cubit.dart';
+import 'package:admin_app_foodi/ViewModel/Bloc/UserCubit/user_cubit.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -22,8 +24,12 @@ class HomePage extends StatelessWidget {
     var section = SectionCubit.get(context);
     var dash = DashBoardCubit.get(context);
     var order = OrdersCubit.get(context);
-    return BlocProvider.value(
-      value: order..OrdersData(),
+    var users = UserCubit.get(context);
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider.value(value: users..getUsersInfo()),
+          BlocProvider.value(value: order..OrdersData()..getTotalRevenue()),
+        ],
       child: Scaffold(
           appBar: AppBar(
             backgroundColor: AppColor.orange,
@@ -57,6 +63,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: GridView.count(
+                      physics: const BouncingScrollPhysics(),
                       crossAxisCount: 2,
                       children: List.generate(dash.cards.length, (index) {
                         return DashBoardCard(item: dash.cards[index],
@@ -64,10 +71,28 @@ class HomePage extends StatelessWidget {
                       }),
                     ),
                   ),
+              LineChart(
+              LineChartData(
+                minY: 60,
+                maxY: 80,
+                lineBarsData: [
+                  LineChartBarData(
+                    color: AppColor.orange,
+                    isCurved: true,
+                    barWidth: 3,
+                  ),
+                ],
+                titlesData: FlTitlesData(
+                  topTitles: AxisTitles(
+                    sideTitles: SideTitles(showTitles: false),
+                  ),
+                  rightTitles: AxisTitles(
+                    sideTitles: SideTitles(showTitles: false),
+                  ),
+                )
+              ),
 
-                  TextButton(onPressed: (){
-                    order.getTotalRevenue();
-                  }, child: Text("click"))
+              ),
                 ],
               );
             },

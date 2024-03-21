@@ -17,7 +17,8 @@ class DashBoardCubit extends Cubit<DashBoardState> {
 
   List<DashCardModel>cards = [
      DashCardModel("assets/icons/parcel-tracking.png", "32", "Active Orders"),
-     DashCardModel("assets/icons/deposit.png","300" , "Generated Revenue")
+     DashCardModel("assets/icons/deposit.png","300" , "Generated Revenue"),
+     DashCardModel("assets/icons/mobile-in-hand.png", "35", "Users"),
   ];
 
 
