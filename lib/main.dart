@@ -1,4 +1,5 @@
 import 'package:admin_app_foodi/View/HomePage.dart';
+import 'package:admin_app_foodi/ViewModel/Bloc/CategoryCubit/category_cubit.dart';
 import 'package:admin_app_foodi/ViewModel/Bloc/DashBoardCubit/dash_board_cubit.dart';
 import 'package:admin_app_foodi/ViewModel/Bloc/Orders/orders_cubit.dart';
 import 'package:admin_app_foodi/ViewModel/Bloc/SectionCubit/section_cubit.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => DashBoardCubit(),),
         BlocProvider(create: (context) => OrdersCubit(),),
         BlocProvider(create: (context) => UserCubit(),),
+        BlocProvider(create: (context) => CategoryCubit(),),
       ],
       child: MaterialApp(
         theme: ThemeData(fontFamily: "Rubik"),

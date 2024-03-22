@@ -12,8 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -71,28 +69,8 @@ class HomePage extends StatelessWidget {
                       }),
                     ),
                   ),
-              LineChart(
-              LineChartData(
-                minY: 60,
-                maxY: 80,
-                lineBarsData: [
-                  LineChartBarData(
-                    color: AppColor.orange,
-                    isCurved: true,
-                    barWidth: 3,
-                  ),
-                ],
-                titlesData: FlTitlesData(
-                  topTitles: AxisTitles(
-                    sideTitles: SideTitles(showTitles: false),
-                  ),
-                  rightTitles: AxisTitles(
-                    sideTitles: SideTitles(showTitles: false),
-                  ),
-                )
-              ),
 
-              ),
+
                 ],
               );
             },

@@ -1,4 +1,7 @@
+import 'package:admin_app_foodi/View/HomePage.dart';
+import 'package:admin_app_foodi/View/Screens/CategoryScreen/CategorySceen.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -12,10 +15,10 @@ class SectionCubit extends Cubit<SectionState> {
 
 
   List<SectionModel> SectionList = [
-    SectionModel(sectionName: "Categories", sectionImage: "assets/icons/categories.png"),
-    SectionModel(sectionName: "Orders", sectionImage: "assets/icons/Orders.png"),
-    SectionModel(sectionName: "Menu", sectionImage: "assets/icons/menu.png"),
-    SectionModel(sectionName: "Analytics", sectionImage: "assets/icons/analysis.png"),
+    SectionModel(sectionName: "Categories", sectionImage: "assets/icons/food.svg" ,  CategoryScreen(),),
+    SectionModel(sectionName: "Orders", sectionImage: "assets/icons/my-orders.svg", HomePage(),),
+    SectionModel(sectionName: "Menu", sectionImage: "assets/icons/food-menu.svg",onTap: () => HomePage()),
+    SectionModel(sectionName: "Analytics", sectionImage: "assets/icons/analysis.svg",onTap: () => HomePage()),
   ];
 
 
