@@ -15,10 +15,10 @@ class SectionCubit extends Cubit<SectionState> {
 
 
   List<SectionModel> SectionList = [
-    SectionModel(sectionName: "Categories", sectionImage: "assets/icons/food.svg" ,  CategoryScreen(),),
-    SectionModel(sectionName: "Orders", sectionImage: "assets/icons/my-orders.svg", HomePage(),),
-    SectionModel(sectionName: "Menu", sectionImage: "assets/icons/food-menu.svg",onTap: () => HomePage()),
-    SectionModel(sectionName: "Analytics", sectionImage: "assets/icons/analysis.svg",onTap: () => HomePage()),
+    SectionModel(sectionName: "Categories", sectionImage: "assets/icons/food.svg" , ),
+    SectionModel(sectionName: "Orders", sectionImage: "assets/icons/my-orders.svg",),
+    SectionModel(sectionName: "Menu", sectionImage: "assets/icons/food-menu.svg",),
+    SectionModel(sectionName: "Analytics", sectionImage: "assets/icons/analysis.svg",),
   ];
 
 
